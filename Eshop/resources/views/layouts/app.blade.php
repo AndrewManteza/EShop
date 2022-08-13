@@ -13,8 +13,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+     <!-- Styles -->
+     <link href= "{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet">
+     <link href= "{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
+    
+
+   
 </head>
 <body>
     <div id="app">
@@ -49,23 +53,29 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                               {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                              <li>
+                                  <a class="dropdown-item" href="#">
+                                      My Profile
+                                  </a>
+                              </li>
+                              <li>
+                                  <a class="dropdown-item"  href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                                  </a>
+                            
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                             </li>
+                            </ul>
+                          </li>
+                         
                         @endguest
                     </ul>
                 </div>
@@ -76,5 +86,9 @@
             @yield('content')
         </main>
     </div>
+
+     <!-- Scripts -->
+    <script src="{{ asset('frontned/js/bootstrap.bundle.min.js')}}" defer></script> 
+
 </body>
 </html>
