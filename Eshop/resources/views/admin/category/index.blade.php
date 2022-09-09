@@ -4,10 +4,11 @@
     <div class="card">
         <div class="card-header">
             <h4>Category Page</h4>
+            <hr>
         </div>
 
         <div class="card-body">
-           <table class="table">
+           <table class="table table-bordered table-striped">
                <thead>
                    <tr>
                        <th>Id</th>
@@ -24,7 +25,7 @@
                        <td>{{$item->name}}</td>
                        <td>{{$item->description}}</td>
                        <td>
-                           <img src="{{ asset('assets/uploads/category/'.$item->image) }}" alt="Image here">
+                           <img src="{{ asset('assets/uploads/category/'.$item->image) }}" class = "cate-image" alt="Image here">
                         </td>
                        <td>
                            <button class="btn btn-primary">Edit</button>
