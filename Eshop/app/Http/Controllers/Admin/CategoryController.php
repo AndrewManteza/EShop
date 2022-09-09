@@ -9,14 +9,18 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index()
-    {
-        return view('admin.category.index');
-    }
+        {
+
+        $category = Category::all();
+        return view('admin.category.index', compact('category'));
+        
+        }
 
     public function add()
         {
             return view('admin.category.add');
         }
+
     public function insert(Request $request)
     {
         $category = new Category();
@@ -25,7 +29,7 @@ class CategoryController extends Controller
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time().'.'.$ext;
-            $file->move('assets\uploads\category',$filename);
+            $file->move('assets/uploads/category/',$filename);
             $category->image = $filename;
 
         }
